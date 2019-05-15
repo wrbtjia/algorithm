@@ -1,4 +1,4 @@
-package algorithm
+package base
 
 
 //用于演示Golang相关算法所写的数据结构

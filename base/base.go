@@ -1,4 +1,4 @@
-package algorithm
+package base
 
 //链表定义
 type LNode struct {
