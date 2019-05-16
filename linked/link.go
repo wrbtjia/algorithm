@@ -27,11 +27,29 @@ func (n *LNode)add(i int)  {
 
 
 }
-func (n *LNode)print()  {
+func print(n *LNode)  {
 	for cur := n; cur != nil;{
 		fmt.Println(cur.Data)
 		cur = cur.Next
 	}
+}
+
+func reverse(node *LNode) *LNode {
+	if node == nil || node.Next == nil{
+		return nil
+	}
+	var pre *LNode
+	var curs *LNode
+
+
+	for node != nil  {
+		curs = node.Next
+		node.Next = pre
+		pre = node
+		node = curs
+	}
+	return pre
+
 }
 
 func main() {
@@ -39,6 +57,12 @@ func main() {
 	n.add(2)
 	n.add(3)
 	n.add(4)
-	n.print()
+	n.add(5)
+	n.add(6)
+	n.add(7)
+	print(n)
 
+	d := reverse(n)
+
+	print(d)
 }
