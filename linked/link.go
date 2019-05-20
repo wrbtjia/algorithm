@@ -20,7 +20,7 @@ func (n *LNode)add(i int)  {
 		}else {
 			cur.Next=&LNode{}
 			cur.Next.Data=i
-			cur = cur.Next
+
 			return
 		}
 	}
