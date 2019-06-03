@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 type LNode struct {
 	Data int
@@ -32,6 +35,8 @@ func print(n *LNode) {
 		cur = cur.Next
 	}
 }
+
+
 
 /*func reverseList(head *ListNode) *ListNode {
 	cur := head
@@ -114,6 +119,33 @@ func reverseK(node *LNode, k int) *LNode {
 	return pre
 
 }
+/**
+反转链表中间段
+ */
+func twostage(head *LNode, m,n int) *LNode {
+	var rest = head
+	var pre *LNode
+	for i:=1;i<m;i++ {
+		pre = head
+		head = head.Next
+	}
+	var be = head
+	var newhead *LNode
+	for j:=0;j<n-m+1;j++ {
+		news := head.Next
+		head.Next = newhead
+		newhead = head
+		head = news
+	}
+	if pre != nil {
+		pre.Next = newhead
+
+	}else {
+		rest = newhead
+	}
+	be.Next = head
+	return rest
+}
 
 func reverseKGroup(head *LNode, k int) *LNode {
 	/*	var n = head
@@ -167,20 +199,32 @@ func reverseKGroup(head *LNode, k int) *LNode {
 func main() {
 	n := create(1)
 	n.add(2)
-	n.add(3)
+//	n.add(3)
 	n.add(4)
-	n.add(5)
+/*	n.add(5)
 	n.add(6)
-	n.add(7)
+	n.add(7)*/
 	print(n)
+
+
+	m := create(1)
+	m.add(3)
+	m.add(4)
+
+	print(m)
+
+
 
 	/*	d := reverse(n)
 		print(d)
 	*/
 	fmt.Println()
 
-	d := reverseK(n, 4)
-	print(d)
+/*	d:=twostage(n,1,4)
+	print(d)*/
+
+	/*d := reverseK(n, 4)
+	print(d)*/
 
 	/*	d := reverseKGroup(n,3)
 		print(d)
@@ -189,4 +233,101 @@ func main() {
 	/*d:=reverseStack(n)
 	print(d)*/
 
+
+	d:=mergeTwoLists(n,m)
+	print(d)
+
 }
+/**
+合并两个有序链表
+输入：1->2->4, 1->3->4
+输出：1->1->2->3->4->4
+ */
+func mergeTwoLists(l1 *LNode, l2 *LNode) *LNode {
+
+	begin := time.Now()
+
+	var rest = &LNode{Data:0}
+	var head = rest
+	for l1 != nil && l2 != nil {
+		if l1.Data > l2.Data {
+			head.Next = l2
+			l2 = l2.Next
+		}else {
+			head.Next = l1
+			l1 = l1.Next
+		}
+		head = head.Next
+	}
+
+	if l1 != nil {
+		head.Next = l1
+	}
+	if l2 != nil {
+		head.Next = l2
+	}
+
+	end := time.Now()
+	fmt.Println(end.Sub(begin))
+
+	return rest.Next
+}
+
+/**
+合并K个排序链表
+输入:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+输出: 1->1->2->3->4->4->5->6
+ */
+func mergeKLists(lists []*LNode) *LNode {
+	if len(lists)  == 0 {
+		return nil
+	}
+	if len(lists)  == 1 {
+		return lists[0]
+	}
+	if len(lists)  == 2 {
+		return mergeTwoLists(lists[0],lists[1])
+	}
+	mid := len(lists) /2
+	var sub1 []*LNode
+	var sub2 []*LNode
+	for i := 0;i<mid;i++ {
+		sub1 = append(sub1, lists[i])
+	}
+
+	for j:=mid;j<len(lists);j++   {
+		sub2 = append(sub2, lists[j])
+	}
+
+	l1 := mergeKLists(sub1)
+
+	l2 := mergeKLists(sub2)
+
+	return mergeTwoLists(l1,l2)
+}
+
+
+/**
+给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
+输入: 1->2->3->4->5->NULL, k = 2
+输出: 4->5->1->2->3->NULL
+ */
+/*func rotateRight(head *ListNode, k int) *ListNode {
+
+	var start = &ListNode{Data:0}
+	var next = head
+	for next != nil {
+		if next {
+
+		}
+		next = next.Next
+	}
+	return nil
+}
+*/
+
