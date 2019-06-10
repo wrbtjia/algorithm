@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type tree struct {
 	data int
@@ -62,4 +64,5 @@ func main() {
 
 	fmt.Println(datas)
 
+	
 }

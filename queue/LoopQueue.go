@@ -1,9 +1,11 @@
 package main
 
-
 import (
+	"bufio"
 	"errors"
 	"fmt"
+	"os"
+	"strconv"
 )
 
 type loop struct {
@@ -19,8 +21,11 @@ func CreateQueue() *loop  {
 
 func AddQueue(q *loop ,val int) error {
 	if IsFull(q) {
+		fmt.Println("队列已满")
 		return errors.New("队列已满")
+
 	}
+	//0 1 2 3 4
 	q.array[q.tail] = val
 	q.tail = (q.tail+1)%q.maxSize
 	return nil
@@ -28,6 +33,7 @@ func AddQueue(q *loop ,val int) error {
 
 func GetQueue(q *loop) (int,error) {
 	if IsTemp(q) {
+		fmt.Println("队列已空")
 		return -1,errors.New("队列已空")
 	}
 	val := q.array[q.head]
@@ -61,7 +67,30 @@ fmt.Println(size)
 func main() {
 	q:=CreateQueue()
 
-	AddQueue(q,1)
+	scanner := bufio.NewScanner(os.Stdin)
+	for  scanner.Scan(){
+
+		s,_:= strconv.Atoi(scanner.Text())
+
+		switch (s) {
+		case 0:
+			Show(q)
+			break
+		case 9:
+			fmt.Println(Size(q))
+			break
+		case 8:
+			res,_:=GetQueue(q)
+			fmt.Println(res)
+			break
+		default:
+			AddQueue(q,s)
+
+		}
+	}
+
+
+	/*AddQueue(q,1)
 	AddQueue(q,2)
 	AddQueue(q,3)
 	AddQueue(q,4)
@@ -83,5 +112,5 @@ func main() {
 
 	AddQueue(q,5)
 	AddQueue(q,6)
-	Show(q)
+	Show(q)*/
 }
