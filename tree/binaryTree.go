@@ -23,7 +23,7 @@ func Insert(e *tree,val int) *tree {
 
 	if e.data > val {
 		e.left = Insert(e.left,val)
-	}else {
+	}else if e.data < val{
 		e.right = Insert(e.right,val)
 	}
 	return e
@@ -31,14 +31,20 @@ func Insert(e *tree,val int) *tree {
 //查询时记录下标
 var i int=0
 func toArrayNode(t *tree,datas []int)  {
+
 	if t.left != nil{
+
 		toArrayNode(t.left,datas)
 	}
 	datas[i] = t.data
 	i++
+
+
 	if t.right != nil {
+
 		toArrayNode(t.right,datas)
 	}
+	fmt.Println(t.data)
 }
 
 

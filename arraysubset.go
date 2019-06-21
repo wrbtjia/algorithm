@@ -2,6 +2,11 @@ package main
 
 import "fmt"
 
+
+/**
+获取一个数组的所有子集
+
+ */
 func subset(i int,nums []int,item []int,resutl *[][]int)   {
 	if i>= len(nums){
 		return

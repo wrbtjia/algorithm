@@ -25,4 +25,8 @@ func main() {
 	s := twoSum(nums, 6)
 
 	fmt.Println(s)
+
+
+
+	fmt.Println(11%10)
 }

@@ -90,33 +90,44 @@ func reverseStack(node *LNode) *LNode {
 */
 func reverseK(node *LNode, k int) *LNode {
 
-	var pre = node
-	begin := pre
-	var end *LNode
-	var pNext *LNode
+	if node == nil {
+		return node
+	}
 
-	for begin != nil {
-		end = begin
-		for i := 1; i < k; i++ {
-			if end.Next != nil {
-				end = end.Next
+	var tail = node
 
+	var head = node
+
+	for  {
+		count :=0
+		i :=1
+		for i<=k  {
+			if tail != nil {
+				tail = tail.Next
+				count ++
 			}
-			if end.Next == nil {
-				break
-			}
+			i++
+		}
+		if count<k{
+			return node
 		}
 
-		pNext = end.Next
-		end.Next = nil
+		var newNode *LNode
+		for head != tail {
+			cur := head.Next
+			head.Next = newNode
+			newNode = head
+			head = cur
+		}
 
-		pre = reverse(begin)
+		node.Next = reverseK(head,k)
 
-		begin.Next = pNext
-		begin = pNext
+		return newNode
 
 	}
-	return pre
+
+
+	return node
 
 }
 /**
@@ -199,20 +210,20 @@ func reverseKGroup(head *LNode, k int) *LNode {
 func main() {
 	n := create(1)
 	n.add(2)
-//	n.add(3)
+	n.add(3)
 	n.add(4)
-/*	n.add(5)
-	n.add(6)
-	n.add(7)*/
+	n.add(5)
+	/*	n.add(6)
+		n.add(7)*/
 	print(n)
 
 
-	m := create(1)
+/*	m := create(1)
 	m.add(3)
 	m.add(4)
 
 	print(m)
-
+*/
 
 
 	/*	d := reverse(n)
@@ -223,19 +234,19 @@ func main() {
 /*	d:=twostage(n,1,4)
 	print(d)*/
 
-	/*d := reverseK(n, 4)
-	print(d)*/
+	d := reverseK(n, 3)
+	print(d)
 
 	/*	d := reverseKGroup(n,3)
-		print(d)
-	*/
+		print(d)*/
 
-	/*d:=reverseStack(n)
+
+/*	d:=reverseStack(n)
 	print(d)*/
 
 
-	d:=mergeTwoLists(n,m)
-	print(d)
+	/*d:=mergeTwoLists(n,m)
+	print(d)*/
 
 }
 /**
