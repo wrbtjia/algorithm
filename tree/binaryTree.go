@@ -29,7 +29,7 @@ func Insert(e *tree,val int) *tree {
 	return e
 }
 //查询时记录下标
-var i int=0
+var i int = 0
 func toArrayNode(t *tree,datas []int)  {
 
 	if t.left != nil{

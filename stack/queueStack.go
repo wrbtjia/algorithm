@@ -17,9 +17,7 @@ pop() -- 移除栈顶元素
 top() -- 获取栈顶元素
 empty() -- 返回栈是否为空
 
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/implement-stack-using-queues
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
 
 Initialize your data structure here. */
 func Constructors() MyStack {
