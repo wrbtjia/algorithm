@@ -27,22 +27,17 @@ func moveZeroes(nums []int)  {
 }
 
 func moveZeroes2(nums []int)  {
+	z:=0
 
-	k:=0
 	for i:=0;i< len(nums);i++  {
-
-		if int64(nums[i]) >0 {
-			if i != k {
-				nums[k] = nums[i]
-				k++
+		if nums[i] > 0{
+			if i != z {
+				nums[i],nums[z] = nums[z],nums[i]
+				z++
 			}else {
-					k++
+					z++
 			}
 		}
-	}
-
-	for ;k< len(nums); k++ {
-		nums[k] = 0
 	}
 
 }

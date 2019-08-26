@@ -15,16 +15,13 @@ import "fmt"
 输出: 6
  */
 
-var g int = 0
+
 func countNodes(root *treeNoded) int {
-	if root == nil || root.Right == nil || root.Left == nil{
+	if root == nil{
 		return 0
 	}
-	g = g+1
-	countNodes(root.Left)
-	countNodes(root.Right)
 
-	return g
+	return countNodes(root.Left) + countNodes(root.Right) +1
 
 }
 

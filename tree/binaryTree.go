@@ -39,7 +39,6 @@ func toArrayNode(t *tree,datas []int)  {
 	datas[i] = t.data
 	i++
 
-
 	if t.right != nil {
 
 		toArrayNode(t.right,datas)

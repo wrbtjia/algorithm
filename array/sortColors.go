@@ -30,8 +30,28 @@ func sortColors(nums []int)  {
 	}
 }
 
+
+
 func main() {
 	var nums = []int{2,0,2,1,1,0}
-	sortColors(nums)
+	sortColors2(nums)
 	fmt.Println(nums)
+
+}
+
+func sortColors2(nums []int)  {
+	r :=-1
+	b := len(nums)
+	for i:=0;i< b;  {
+		if nums[i] == 1 {
+			i++
+		}else if nums[i] == 2{
+				b--
+				nums[i],nums[b] = nums[b],nums[i]
+		}else {
+			r++
+			nums[i],nums[r] = nums[r],nums[i]
+			i++
+		}
+	}
 }

@@ -6,6 +6,7 @@ import (
 )
 
 /**
+40. 组合总和 II
 给定一个数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
 
 candidates 中的每个数字在每个组合中只能使用一次。
@@ -22,7 +23,7 @@ candidates 中的每个数字在每个组合中只能使用一次。
  */
 func combinationSum2(candidates []int, target int) [][]int {
 
-	sort.Ints(candidates)
+	sort.Ints(candidates)  //1,1,2,5,6,7,10
 	res := [][]int{}
 	generate2(&res, candidates, []int{}, target, 0, 0)
 	return res

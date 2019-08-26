@@ -36,4 +36,6 @@ func main() {
 	var nums = []int{1,2,3,1}
 
 	fmt.Println(containsNearbyDuplicate(nums,3))
+
 }
+

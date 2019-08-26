@@ -17,11 +17,9 @@ func main() {
 			}
 		}
 
-		temp := array[i]
 
+		array[i],array[position] = array[position],array[i]
 
-		array[i]= array[position]
-		array[position] = temp
 	}
 
 	fmt.Println(array)
