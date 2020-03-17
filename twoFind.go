@@ -11,6 +11,8 @@ func twoFind(array []int, val int) {
 
 		midVal := array[mid]
 
+		fmt.Println(midVal)
+
 		if midVal == val {
 			fmt.Println(midVal, "下标为：", mid)
 			return
@@ -27,8 +29,8 @@ func twoFind(array []int, val int) {
 二分查找 必须是有序的数组
 */
 func main() {
-	var er = []int{1, 2, 5, 7, 15, 25, 30, 36, 39, 51, 67, 78, 80, 82, 85, 91, 92, 97}
+	var er = []int{2,4,6,8, 10, 12, 14, 16, 18,20, 22}
 
-	twoFind(er, 97)
+	twoFind(er, 16)
 
 }

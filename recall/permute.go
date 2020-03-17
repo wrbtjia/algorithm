@@ -39,10 +39,10 @@ func allpermute(nums []int,index int,item []int,res *[][]int, st []bool){
 	}
 
 	for i:=0;i< len(nums); i++  {
-		if !st[i]  {
+		if  st[i] == false  {
+			item[index] = nums[i]
 			st[i] = true
 
-			item[index] = nums[i]
 			allpermute(nums,index+1,item,res,st)
 
 			st[i] = false
@@ -53,7 +53,7 @@ func allpermute(nums []int,index int,item []int,res *[][]int, st []bool){
 }
 
 func main() {
-	var nums =[]int{5,4,6,2}
+	var nums =[]int{1,2,3}
 	fmt.Println(permute(nums))
 }
 

@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	//选择排序，从后面找个最小的放在前面的位置，从小到大排序,时间复杂度O(N^2)
@@ -23,4 +25,5 @@ func main() {
 	}
 
 	fmt.Println(array)
+
 }

@@ -1,5 +1,6 @@
 package main
 
+import "fmt"
 
 /**
 
@@ -15,7 +16,6 @@ package main
 一般采用的都是原地排序版本，这样不需要分配额外的空间，对速度有提升。
 
  */
-
 
  /**
  实现
@@ -35,3 +35,84 @@ package main
 因为第一次交换的时候是arr[0] -> mid，所以交换后一定满足arr[i] <= mid，所以可以移位操作。否则遍历无法结束
 
   */
+
+
+func quickSort(arr []int, start, end int) {
+	if start < end {
+		i, j := start, end
+		key := arr[(start+end)/2]
+		for i <= j {
+			for arr[i] < key {
+				i++
+			}
+			for arr[j] > key {
+				j--
+			}
+			if i <= j {
+				arr[i], arr[j] = arr[j], arr[i]
+				i++
+				j--
+			}
+		}
+		if start < j {
+			quickSort(arr, start, j)
+		}
+		if end > i {
+			quickSort(arr, i, end)
+		}
+	}
+}
+
+func main() {
+	arr := []int{3, 7, 9, 8, 38, 93, 12, 222, 45, 93, 23, 84, 65, 2}
+	qqqq(arr, 0, len(arr)-1)
+	fmt.Println(arr)
+}
+
+func qqqq(arr []int,s,e int)  {
+	if s < e{
+		x,y := s,e
+		mid := arr[(s+e)/2]
+		fmt.Println(mid)
+		for x<=y {
+			for arr[x] < mid {
+				x++
+			}
+			for arr[y] > mid {
+				y--
+			}
+			if x <= y {
+				arr[x],arr[y] = arr[y],arr[x]
+				x++
+				y--
+			}
+		}
+		qqqq(arr,s,y)
+		qqqq(arr,x,e)
+
+	}
+}
+
+func kkk(arr []int,k,j int)  {
+	if k<j {
+		i,p:=k,j
+		mid:=arr[(k+j)/2]
+		for i<=p {
+			for arr[i]<mid {
+				i++
+			}
+			for arr[p]>mid {
+				p--
+			}
+			if i<=p {
+				arr[i],arr[p]=arr[p],arr[i]
+				i++
+				p--
+			}
+		}
+		kkk(arr,k,p)
+		kkk(arr,i,j)
+
+
+	}
+}

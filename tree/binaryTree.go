@@ -46,9 +46,63 @@ func toArrayNode(t *tree,datas []int)  {
 	fmt.Println(t.data)
 }
 
+func findMin(t *tree) *tree {
+	if t.left == nil {
+		return t
+	}
+	return findMin(t.left)
 
-func Show()  {
-	fmt.Println()
+}
+
+func delMin(t *tree) *tree  {
+	if t.left == nil {
+		newNode := t.right
+		t.left = nil
+		return newNode
+	}
+	t.left = delMin(t.left)
+	return t
+
+}
+
+func delTree(t *tree,val int) *tree   {
+	if t == nil {
+		return t
+	}
+	if t.data > val {
+		t.left = delTree(t.left,val)
+		return t.left
+	}else if t.data < val {
+		t.right = delTree(t.right,val)
+		return t.right
+	}else {
+		if t.left == nil {
+			newNode := t.right
+			t.right = nil
+			return newNode
+		}else if t.right == nil {
+			newNode := t.left
+			t.left = nil
+			return newNode
+		}else {
+			newNode := findMin(t.right)
+			newNode.right = delMin(t.right)
+			newNode.left = t.left
+			t.left,t.right = nil,nil
+			return newNode
+		}
+	}
+
+}
+
+func Show(t *tree)  {
+	if t == nil {
+		return
+	}
+
+	Show(t.left)
+	fmt.Println(t.data)
+	Show(t.right)
 }
 
 func main() {
@@ -69,5 +123,6 @@ func main() {
 
 	fmt.Println(datas)
 
-	
+	Show(t)
+	//EFHIGJK
 }

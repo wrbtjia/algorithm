@@ -34,7 +34,7 @@ func (b *BigHeap ) leftChild(index int) int {
 }
 
 func (b *BigHeap ) rightChild (index int) int {
-	return index * 2 + 2;
+	return index * 2 + 2
 }
 
 func (b *BigHeap ) swap(i,j int)  {
@@ -47,7 +47,7 @@ func (b *BigHeap ) swap(i,j int)  {
 
 func (b *BigHeap ) add(index int)  {
 	b.data = append(b.data, index)
-	b.siftUp(len(b.data) - 1);
+	b.siftUp(len(b.data) - 1)
 
 }
 

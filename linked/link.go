@@ -53,14 +53,14 @@ func reverse(node *LNode) *LNode {
 		return nil
 	}
 	var pre *LNode
-	var curs = new(LNode)
+	var curs *LNode
 
-	for node != nil {
+	for node !=nil {
 		curs = node.Next
-
 		node.Next = pre
 		pre = node
 		node = curs
+
 	}
 
 	return pre
@@ -226,16 +226,16 @@ func main() {
 */
 
 
-	/*	d := reverse(n)
+		d := reverse(n)
 		print(d)
-	*/
+
 	fmt.Println()
 
 /*	d:=twostage(n,1,4)
 	print(d)*/
 
-	d := reverseK(n, 3)
-	print(d)
+//	d := reverseK(n, 3)
+//	print(d)
 
 	/*	d := reverseKGroup(n,3)
 		print(d)*/
