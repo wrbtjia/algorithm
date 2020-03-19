@@ -10,6 +10,8 @@ import "fmt"
 
 输入: [2,0,2,1,1,0]
 输出: [0,0,1,1,2,2]
+
+后续练习  88  215
  */
 
 func sortColors(nums []int)  {
