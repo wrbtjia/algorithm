@@ -8,6 +8,8 @@ import "fmt"
 输入: "abcabcbb"
 输出: 3
 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+
+后续练习 438   76
  */
 func lengthOfLongestSubstring(s string) int {
 	freq:=[256]int{0}

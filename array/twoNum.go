@@ -26,7 +26,4 @@ func main() {
 
 	fmt.Println(s)
 
-
-
-	fmt.Println(11%10)
 }
