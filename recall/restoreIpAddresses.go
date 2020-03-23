@@ -23,8 +23,9 @@ func restoreIpAddresses(s string) []string {
 }
 
 func ip(path, s string, remain int , ret *[]string)  {
-
+	fmt.Printf("%s       %s \n",path,s)
 	if remain == -1 && len(s) == 0 {
+		fmt.Printf("%s       %s   ----------------\n",path,s)
 		*ret = append(*ret, path[:len(path)-1])
 	}
 	//fmt.Println(path, left , remain , ret)

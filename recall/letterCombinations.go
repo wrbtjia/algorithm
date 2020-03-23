@@ -10,6 +10,8 @@ import "fmt"
 
 输入："23"
 输出：["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+
+后续练习 131 93 46  47
  */
 var kv = map[int]string {
 	2: "abc",
@@ -48,6 +50,13 @@ func letterCombinationsCore(digits string, index int, pRes *[]string, str string
 func main() {
 
 	fmt.Println(int("23"[0]-'0'))
+
+	for _,v:=range kv[2]{
+		fmt.Println(v)
+	}
+
+
+
 	fmt.Println(letterCombinations("23"))
 
 }
