@@ -23,37 +23,29 @@ candidates 中的每个数字在每个组合中只能使用一次。
  */
 func combinationSum2(candidates []int, target int) [][]int {
 
-	sort.Ints(candidates)  //1,1,2,5,6,7,10
+	sort.Ints(candidates) //快排，懒得写
 	res := [][]int{}
-	generate2(&res, candidates, []int{}, target, 0, 0)
+	generate2(candidates, nil, 0,target,&res) //深度优先
 	return res
+
 }
 
-func generate2(res *[][]int, candidates, newRow []int, target, start, sum int) {
-	if sum == target {
-		(*res) = append((*res), newRow)
-		return
-	} else if sum > target {
+func generate2 (candidates, newRow []int, left,target int,res *[][]int) {
+	if target == 0{
+		ms :=make([]int,len(newRow))
+		copy(ms,newRow)
+		*res = append(*res,ms)
 		return
 	}
-	length := len(candidates)
-	for i := start; i < length; i++ {
-		item := candidates[i]
-		row := make([]int, len(newRow)+1)
-		copy(row, newRow)
-		row[len(row)-1] = item
-		generate2(res, candidates, row, target, i+1, sum+item)
-
-		next := i
-		for candidates[next] == candidates[i] {
-			next += 1
-			if next == length {
-				break
-			}
+	for i:=left;i<len(candidates);i++ {
+		if i !=left && candidates[i] == candidates[i-1] {
+			continue
 		}
-		i = next - 1
+		if target < candidates[i]{
+			return
+		}
+		generate2(candidates,append(newRow,candidates[i]),i+1,target - candidates[i],res)
 	}
-	return
 }
 
 func main() {
