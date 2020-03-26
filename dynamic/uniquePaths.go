@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /**
 62. 不同路径
 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
@@ -30,5 +32,20 @@ package main
 
 
 func uniquePaths(m int, n int) int {
+	dp := make([][]int, m)
+	for i := 0; i < m; i++ {
+		dp[i] = make([]int, n)
+		for j := 0; j < n; j++ {
+			if 0 == i || 0 == j {
+				dp[i][j] = 1
+			} else {
+				dp[i][j] = dp[i][j - 1] + dp[i - 1][j]
+			}
+		}
+	}
+	return dp[m - 1][n - 1]
+}
 
+func main() {
+	fmt.Println(uniquePaths(7,7))
 }

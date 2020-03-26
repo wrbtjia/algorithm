@@ -12,6 +12,8 @@ import "sort"
 输入: [1,2,3], [1,1]
 
 输出: 1
+
+后续练习 392
  */
 func findContentChildren(g []int, s []int) int {
 
