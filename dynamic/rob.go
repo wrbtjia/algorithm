@@ -41,17 +41,23 @@ func rob2(nums []int) int {
 		return 0
 	}
 //nums:=[]int{2,7,9,3,1}
-	sum:=0  //表示下标从0到i-2的累计最大值nums[i]
-	for i:=1;i<len(nums);i++ {
-		nums[i] += sum
+	sum := 0  //表示下标从0到i-2的累计最大值nums[i]
+	ppt :=0
+	for i:=0;i<len(nums);i++ {
+		/*nums[i] += sum
 		if nums[i - 1] > sum {
 			sum = nums[i - 1]  //在下标为i时更新i-1的max，下一轮循环i=i+1,使用的是i-1的max，这样才是正确的（不能连续，避免报警）
-		}
+		}*/
+
+		val := max(nums[i]+ppt,sum)
+		ppt  =sum
+		sum = val
+
 
 	}
 
 
-	return max(sum,nums[len(nums)-1])
+	return sum
 
 
 /*	l := len(nums)
@@ -78,7 +84,8 @@ func rob2(nums []int) int {
 
 
 func main() {
-	nums:=[]int{2,7,9,3,1}
-	fmt.Println(rob(nums))
+//	nums:=[]int{2,7,9,3,1}
+	nums:=[]int{1,2,4,1,7,8,3}
+	fmt.Println(rob2(nums))
 
 }
