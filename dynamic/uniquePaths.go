@@ -47,5 +47,5 @@ func uniquePaths(m int, n int) int {
 }
 
 func main() {
-	fmt.Println(uniquePaths(7,7))
+	fmt.Println(uniquePaths(7,3))
 }

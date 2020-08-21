@@ -37,6 +37,27 @@ func lengthOfLIS(nums []int) int {
 	return res
 }
 
+func lengthOfLIS2(nums []int) int {
+	if len(nums) <1 {
+		return 0
+	}
+	res:=0
+	dp := make([]int,len(nums))
+	for i:=0;i<len(nums);i++ {
+		sum:=0
+		for j:=0;j<i ;j++  {
+			if sum < dp[j] && nums[j] < nums[i] {
+				sum = dp[j]
+			}
+		}
+		dp[i]= sum+1
+		if dp[i] > res {
+			res=dp[i]
+		}
+	}
+	return  res
+}
+
 func main() {
 	nums:=[]int{10,9,2,5,3,7,101,18}
 	fmt.Println(lengthOfLIS(nums))

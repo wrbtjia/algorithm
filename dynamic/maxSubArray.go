@@ -35,7 +35,29 @@ func maxSubArray(nums []int) int {
 	}
 }
 
+func maxSubArray2(nums []int) int {
+	if len(nums) < 1{
+		return 0
+	}
+	dp:=nums[0]
+	res:=0
+	for i:=1;i<len(nums);i++ {
+		dp = maxx(nums[i],dp+nums[i])
+		res = maxx(dp,res)
+	}
+	return res
+}
+
+func maxx(i,j int) int {
+	if i>j{
+		return i
+	}else {
+		return j
+	}
+
+}
+
 func main() {
 	nums:=[]int{2,1,-3,4,-1,2,1,-5,4}
-	fmt.Println(maxSubArray(nums))
+	fmt.Println(maxSubArray2(nums))
 }
